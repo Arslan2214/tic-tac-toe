@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic-Tac-Toe Game | By ARslan Ahmad |</title>
+
+    <!-- Tailwind css  -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- My Css -->
+    <link rel="stylesheet" href="style.css">
+    <!-- My Js -->
+    <script src="./index.js" defer></script>
+
+</head>
+
+<body class="w-[100vw] h-[100vh] bg-teal-300/80 flex flex-col justify-center items-center text-teal-700/80">
+    <h2 class="text-4xl md:text-6xl sm:text-5xl underline my-8">Tic-Tac-Toe</h2>
+    <!-- | User's Turn | This div show which user is in tern -->
+    <div class="box text-left">
+        <p class="my-2">
+            (Its <span id="playerName" class="underline underline-offset-2">Player-1</span>'s turn: '<span id="playerTurn" class="font-semibold">X</span>')
+        </p>
+    </div>
+    <div id="mainBox" class="bg-teal-400 aspect-[5/4] p-1 text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+        <div class="row">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/70" onclick="boxClicked(event)">
+                
+            </div>
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+                
+            </div>
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/70" onclick="boxClicked(event)">
+                
+            </div>
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+                
+            </div>
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/70" onclick="boxClicked(event)">
+                
+            </div>
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+                
+            </div>
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Winner Announcement -->
+    <p id="winAnnounce" class="mt-2 hidden">
+        Congratulation! <span id="winner" class="font-semibold text-xl"></span> wins!
+    </p>
+    
+    <!-- Reset Game -->
+    <p id="winAnnounce" class="mt-2 ">
+        <span class="underline font-semibold cursor-pointer" onclick="resetGame()">Reset</span>
+    </p>
+</body>
+
+</html>

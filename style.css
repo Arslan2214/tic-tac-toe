@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300&family=Lato:wght@300&family=Open+Sans:wght@300&family=Raleway&family=Roboto:wght@300&family=Ysabeau+Infant&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+    user-select: none;
+}
+
+#mainBox {
+    width: min(800px, 50%);
+}
+
+.row {
+    height: calc(100% / 3);
+    display: flex;
+    /* place-items: center; */
+}
+
+.box {
+    width: calc(100% / 3);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}

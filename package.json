@@ -1,0 +1,15 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "This App is for Precticing our typing skills using HTML, Css and Js on top of Electron.Js",
+  "main": "main.js",
+  "scripts": {
+    "watch": "nodemon --exec electron ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^25.4.0"
+  }
+}
