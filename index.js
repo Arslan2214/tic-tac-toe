@@ -66,21 +66,20 @@ const checkWinner = () => {
             boxes[b].classList.add('bg-teal-500/70')
             boxes[c].classList.add('bg-teal-500/70')
 
-            if(!boxArray.every(box => box.disabled === true))
-            {
+            if (!boxArray.every(box => box.disabled === true)) {
                 winAnc(currentPlayerName, currentPlayer)
             }
             boxes.forEach(box => box.disabled = true)
             return
         }
+
     })
 
-    // console.log(boxArray.every(box => box.innerText !== '')) 
-
-    if (boxArray.every(box => box.innerText !== '')) {
+    if (boxArray.every(box => box.innerText !== '') && get('winner').innerText == '') {
         end()
         return
     }
+
 }
 
 
@@ -98,18 +97,18 @@ const boxClicked = e => {
 
 // Game Ending Function 
 const end = () => {
-    if (get('winner').innerText === '') {
-        get('end')?.classList.add('hidden')
-        get('tieGame').classList.remove('hidden')
-        document.querySelectorAll('.box').forEach(box => box.disabled = true)
-    }
+    get('end')?.classList.add('hidden')
+    get('tieGame').classList.remove('hidden')
+    document.querySelectorAll('.box').forEach(box => box.disabled = true)
 }
 
 
 // Reset Game
 const resetGame = () => {
     currentPlayerName = player1
+    get('winner').innerText = ''
     currentPlayer = 'X'
+    changeInfo()
 
     document.querySelectorAll('.box').forEach(box => {
         if (box.disabled === true) {
@@ -118,15 +117,15 @@ const resetGame = () => {
         if (box.classList.contains('bg-teal-500/70')) {
             box.classList.remove('bg-teal-500/70')
         }
-        
+
         box.innerHTML = ''
     })
-        if (!get('winAnnounce').classList.contains('hidden')) {
-            get('winAnnounce').classList.add('hidden')
-        }
-        if (!get('tieGame').classList.contains('hidden')) {
-            get('tieGame').classList.add('hidden')
-        }
+    if (!get('winAnnounce').classList.contains('hidden')) {
+        get('winAnnounce').classList.add('hidden')
+    }
+    if (!get('tieGame').classList.contains('hidden')) {
+        get('tieGame').classList.add('hidden')
+    }
 }
 
 
