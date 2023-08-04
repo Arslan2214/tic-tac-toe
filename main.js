@@ -1,14 +1,15 @@
 const { app, BrowserWindow } = require('electron')
 
+// This function will run when the app is ready
 const runApp = () => {
+    
     const dis = new BrowserWindow({
         width: 1000,
         height: 800,
     })
 
-    console.log('Main Js prints...')
-    dis.loadFile('index.html')
-    // dis.webContents.openDevTools()
+    dis.loadFile('index.html')      // Which file to Load
 }
 
+// Rendering our App
 app.whenReady().then(runApp)

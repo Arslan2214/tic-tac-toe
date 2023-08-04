@@ -10,12 +10,12 @@ let currentPlayer = 'X'
 //  --------------------
 
 // Function to get Element by id
-const id = id => document.getElementById(id)
+const get = id => document.getElementById(id)
 
 // Function to Change Player's Info 
 const changeInfo = () => {
-    id('playerTurn').innerText = currentPlayer
-    id('playerName').innerText = currentPlayerName
+    get('playerTurn').innerText = currentPlayer
+    get('playerName').innerText = currentPlayerName
 }
 
 //  --------------------
@@ -59,7 +59,7 @@ const checkWinner = () => {
             boxes[b].classList.add('bg-teal-500/70')
             boxes[c].classList.add('bg-teal-500/70')
 
-            winAnc(currentPlayerName)
+            winAnc(currentPlayerName, currentPlayer)
             boxes.forEach(box => box.disabled = true)
             return
         }
@@ -81,12 +81,12 @@ const boxClicked = e => {
 
 // Game Ending Function 
 const end = () => {
-    if (id('winner').innerText !== '') {
-        id('end').classList.remove('hidden')
-        id('tieGame').classList.add('hidden')
+    if (get('winner').innerText !== '') {
+        get('end').classList.remove('hidden')
+        get('tieGame').classList.add('hidden')
     } else {
-        id('end').classList.add('hidden')
-        id('tieGame').classList.remove('hidden')
+        get('end').classList.add('hidden')
+        get('tieGame').classList.remove('hidden')
     }
 
     document.querySelectorAll('.box').forEach(box => box.disabled = true)
@@ -103,8 +103,11 @@ const resetGame = () => {
         if (box.disabled === true) {
             box.disabled = false
         }
-        if (box.classList.contains('bg-teal-600')) {
-            box.classList.remove('bg-teal-600')
+        if (box.classList.contains('bg-teal-500/70')) {
+            box.classList.remove('bg-teal-500/70')
+        }
+        if (!get('winAnnounce').classList.contains('hidden')) {
+            get('winAnnounce').classList.add('hidden')
         }
 
         box.innerHTML = ''
@@ -113,12 +116,9 @@ const resetGame = () => {
 
 
 // Winner Announcement
-const name = 'User'
-const winAnc = () => {
-
+const winAnc = (name, player) => {
     changePlayer()
-    id('winner').innerText = currentPlayerName;
-    id('winnerPlayer').innerText = currentPlayer;
-    id('winAnnounce').classList.remove('hidden')
+    get('winner').innerText = name;
+    get('winnerPlayer').innerText = player;
+    get('winAnnounce').classList.remove('hidden')
 }
-// winAnc(name)
