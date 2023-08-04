@@ -9,6 +9,7 @@ const runApp = () => {
     })
 
     dis.loadFile('index.html')      // Which file to Load
+    dis.webContents.openDevTools()
 }
 
 // Rendering our App

@@ -1,6 +1,9 @@
 // <==|Variables |==>
-const player1 = 'Player-1'
-const player2 = 'Player-2'
+let player1 = 'Player-1'
+let player2 = 'Player-2'
+
+player1 ||= prompt('Player1: ')
+player2 ||= prompt('Player2: ')
 
 let currentPlayerName = player1
 let currentPlayer = 'X'
@@ -41,6 +44,10 @@ const changePlayer = () => {
 const checkWinner = () => {
 
     const boxes = document.querySelectorAll('.box')
+    const boxArray = Array.from(boxes);
+
+    // Checking for Winner
+
     const values = [
         [0, 1, 2],
         [3, 4, 5],
@@ -59,11 +66,21 @@ const checkWinner = () => {
             boxes[b].classList.add('bg-teal-500/70')
             boxes[c].classList.add('bg-teal-500/70')
 
-            winAnc(currentPlayerName, currentPlayer)
+            if(!boxArray.every(box => box.disabled === true))
+            {
+                winAnc(currentPlayerName, currentPlayer)
+            }
             boxes.forEach(box => box.disabled = true)
             return
         }
     })
+
+    // console.log(boxArray.every(box => box.innerText !== '')) 
+
+    if (boxArray.every(box => box.innerText !== '')) {
+        end()
+        return
+    }
 }
 
 
@@ -81,16 +98,11 @@ const boxClicked = e => {
 
 // Game Ending Function 
 const end = () => {
-    if (get('winner').innerText !== '') {
-        get('end').classList.remove('hidden')
-        get('tieGame').classList.add('hidden')
-    } else {
-        get('end').classList.add('hidden')
+    if (get('winner').innerText === '') {
+        get('end')?.classList.add('hidden')
         get('tieGame').classList.remove('hidden')
+        document.querySelectorAll('.box').forEach(box => box.disabled = true)
     }
-
-    document.querySelectorAll('.box').forEach(box => box.disabled = true)
-
 }
 
 
@@ -106,19 +118,22 @@ const resetGame = () => {
         if (box.classList.contains('bg-teal-500/70')) {
             box.classList.remove('bg-teal-500/70')
         }
+        
+        box.innerHTML = ''
+    })
         if (!get('winAnnounce').classList.contains('hidden')) {
             get('winAnnounce').classList.add('hidden')
         }
-
-        box.innerHTML = ''
-    })
+        if (!get('tieGame').classList.contains('hidden')) {
+            get('tieGame').classList.add('hidden')
+        }
 }
 
 
 // Winner Announcement
-const winAnc = (name, player) => {
+const winAnc = () => {
     changePlayer()
-    get('winner').innerText = name;
-    get('winnerPlayer').innerText = player;
+    get('winner').innerText = currentPlayerName;
+    get('winnerPlayer').innerText = currentPlayer;
     get('winAnnounce').classList.remove('hidden')
 }
