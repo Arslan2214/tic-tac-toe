@@ -19,42 +19,42 @@
 <body class="w-[100vw] h-[100vh] bg-teal-300/80 flex flex-col justify-center items-center text-teal-700/80">
     <h2 class="text-4xl md:text-6xl sm:text-5xl underline my-8">Tic-Tac-Toe</h2>
     <!-- | User's Turn | This div show which user is in tern -->
-    <div class="box text-left">
+    <div class="text-left">
         <p class="my-2">
-            (Its <span id="playerName" class="underline underline-offset-2">Player-1</span>'s turn: '<span id="playerTurn" class="font-semibold">X</span>')
+            <span id="playerName" class="underline underline-offset-2">Player-1</span>(<span id="playerTurn" class="font-semibold">X</span>)'s turn.
         </p>
     </div>
     <div id="mainBox" class="bg-teal-400 aspect-[5/4] p-1 text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
         <div class="row">
-            <div class="box shadow-md active:shadow-sm active:bg-teal-500/70" onclick="boxClicked(event)">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/70" onclick="boxClicked(event); checkWinner()">
                 
             </div>
-            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event); checkWinner()">
                 
             </div>
-            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
-                
-            </div>
-        </div>
-        <div class="row">
-            <div class="box shadow-md active:shadow-sm active:bg-teal-500/70" onclick="boxClicked(event)">
-                
-            </div>
-            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
-                
-            </div>
-            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event); checkWinner()">
                 
             </div>
         </div>
         <div class="row">
-            <div class="box shadow-md active:shadow-sm active:bg-teal-500/70" onclick="boxClicked(event)">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/70" onclick="boxClicked(event); checkWinner()">
                 
             </div>
-            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event); checkWinner()">
                 
             </div>
-            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event)">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event); checkWinner()">
+                
+            </div>
+        </div>
+        <div class="row">
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/70" onclick="boxClicked(event); checkWinner()">
+                
+            </div>
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event); checkWinner()">
+                
+            </div>
+            <div class="box shadow-md active:shadow-sm active:bg-teal-500/90 disabled:bg-teal-400/80" onclick="boxClicked(event); checkWinner()">
                 
             </div>
         </div>
@@ -62,7 +62,12 @@
 
     <!-- Winner Announcement -->
     <p id="winAnnounce" class="mt-2 hidden">
-        Congratulation! <span id="winner" class="font-semibold text-xl"></span> wins!
+        Congratulation! <span id="winner" class="font-semibold text-xl"></span> (<span id="winnerPlayer" class="text-xl"></span>) wins!
+    </p>
+    
+    <!-- Tie Announcement -->
+    <p id="tieGame" class="mt-2 hidden">
+        Game is Tied!! No-one wins. 
     </p>
     
     <!-- Reset Game -->
